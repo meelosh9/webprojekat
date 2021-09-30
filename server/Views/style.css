@@ -1,0 +1,71 @@
+body
+{
+ display: flex;
+ flex-direction: row;
+ justify-content: space-evenly;
+
+
+}
+
+.adminPanel{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: auto;
+}
+
+.displayPanel{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+}
+
+.dodajLokaciju{
+    display:  flex;
+    flex-direction: column;
+    border:  1px solid black;
+
+}
+.adminBoxInner{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between
+}
+.adminBox{
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 auto;
+    justify-content:space-between;
+    border:  1px solid black;
+
+}
+.stanica{
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    border:  1px solid black;
+
+    background-color:rgb(245, 235, 100);
+    margin: 5px;;
+}
+.lokacija{
+    display: flex;
+    flex-direction: row;
+}
+.lokbox{
+    display: flex;
+    flex-direction: row;
+}
+.meteos{
+    border:  1px solid black;
+
+}
+.mainlok{
+    background-color:rgb(82, 143, 179);
+}
+.mes{
+
+    display: flex;
+    flex-direction: column;
+}
