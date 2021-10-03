@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/iLABHMhj+yFSrdXOQTq6cHmdkbV1W8uOB+YYsS61aTqm11J22fyc6SRZyrxjUA30uY4CZHlLG0Dm+zABFAU/Q==",
+  "dgSpecHash": "9LZPIYEKvg+fizPbSg1FPifV5/Y6qmZ7xwKPOm5GXtnUMwNluV8OYvYU/VjiHgbZ+PVFloD3PoKI7gr2dXBuwg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Biljana\\repos\\webprojekat\\server\\webprog.csproj",
+  "projectFilePath": "C:\\Users\\Biljana\\OneDrive\\Dokumenti\\GitHub\\webprojekat\\server\\webprog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Biljana\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Biljana\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.1\\microsoft.aspnetcore.authentication.jwtbearer.5.0.1.nupkg.sha512",

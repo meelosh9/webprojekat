@@ -2,6 +2,7 @@ import { Lokacija } from "./lokacija.js";
 import { Meteorolog } from "./meteorolog.js";
 import { Stanica } from "./stanica.js";
 
+
 var adminPanel = document.createElement("div");
 document.body.appendChild(adminPanel)
 adminPanel.className="adminPanel"
@@ -19,7 +20,6 @@ var postaviVreme = document.createElement("div");
 var brisanjeGeneral = document.createElement("div");
 
 
-//
 var ll = document.createElement("label");
 ll.innerHTML = "Dodaj lokaciju";
 
@@ -29,7 +29,8 @@ var lkl = document.createElement("label");
 lnl.innerHTML = "Naziv";
 lkl.innerHTML = "Kapacitet";
 var lni = document.createElement("input");
-var lki = document.createElement("input");
+var lki = document.createElement("input")
+
 lni.className = "dodajLokInN"
 lki.className = "dodajLokInMK"
 var lokbox = document.createElement("div")
@@ -70,7 +71,7 @@ var sll = document.createElement("label");
 snl.innerHTML = "Naziv"
 sll.innerHTML = "Lokacija"
 var sni = document.createElement("input");
-var sli = document.createElement("input");
+var sli = document.createElement("select");
 sni.className = "dodajStanInN"
 sli.className = "dodajStanInL"
 var stanbox = document.createElement("div")
@@ -141,6 +142,7 @@ dodajMeteorologa.appendChild(metbox)
 dodajMeteorologa.appendChild(dodajMeteorologaButton)
 
 
+
 var pml = document.createElement("label");
 pml.innerHTML = "Postavi meteorloga";
 
@@ -148,8 +150,8 @@ var pmil = document.createElement("label");
 var pmsl = document.createElement("label");
 pmil.innerHTML = "ID Meteorologa";
 pmsl.innerHTML = "ID Stanice";
-var pmii = document.createElement("input");
-var pmsi = document.createElement("input");
+var pmii = document.createElement("select");
+var pmsi = document.createElement("select");
 pmii.className = "postaviMeteoInM";
 pmsi.className = "postaviMeteoInS";
 
@@ -188,7 +190,7 @@ var pvol = document.createElement("label");
 pvs.innerHTML = "ID Stanice"
 pvtl.innerHTML = "Temeperatura"
 pvol.innerHTML = "Opis"
-var pvsi = document.createElement("input");
+var pvsi = document.createElement("select");
 var pvti = document.createElement("input");
 var pvoi = document.createElement("input");
 pvti.className = "postaviVremeInT"
@@ -222,24 +224,27 @@ postaviVreme.appendChild(pvl)
 postaviVreme.appendChild(pvbox)
 postaviVreme.appendChild(postaviVremeButton)
 
+ll.classList = "naslov"
+sl.classList = "naslov"
+ml.classList = "naslov"
+pml.classList = "naslov"
+pvl.classList = "naslov"
 
-
-var brisanjeGeneralLabel = document.createElement("label");
 
 var brisanjeLokacijeLabel = document.createElement("label");
-var brisanjeLokacijeInput = document.createElement("input");
+var brisanjeLokacijeInput = document.createElement("select");
 var brisanjeLokacijeButton = document.createElement("button");
 brisanjeLokacijeLabel.innerHTML = "Ime lokacije"
 brisanjeLokacijeInput.className = "brisanjeLokIn"
 brisanjeLokacijeButton.innerHTML = "Obrisi"
 var brisanjeStaniceLabel = document.createElement("label");
-var brisanjeStaniceInput = document.createElement("input");
+var brisanjeStaniceInput = document.createElement("select");
 var brisanjeStaniceButton = document.createElement("button");
 brisanjeStaniceLabel.innerHTML = "ID stanice"
 brisanjeStaniceInput.className = "brisanjeStanIn"
 brisanjeStaniceButton.innerHTML = "Obrisi"
 var brisanjeMeteorlogaLabel = document.createElement("label");
-var brisanjeMeteorlogaInput = document.createElement("input");
+var brisanjeMeteorlogaInput = document.createElement("select");
 var brisanjeMeteorlogaButton = document.createElement("button");
 brisanjeMeteorlogaLabel.innerHTML = "ID meteorologa"
 brisanjeMeteorlogaInput.className = "brisanjeMeteoIn"
@@ -264,7 +269,7 @@ brisanjeGeneral.appendChild(brisanjeLabelBox)
 brisanjeGeneral.appendChild(brisanjeInputBox)
 brisanjeGeneral.appendChild(brisanjeButtonBox)
 var napomena = document.createElement("label")
-napomena.innerHTML = "pri brisanju stanice uneti i njenu lokaciju u polje iznad"
+napomena.innerHTML = "*Pri brisanju stanice uneti i njenu lokaciju u polje iznad"
 
 
 dodajLokaciju.className="dodajLokaciju";
@@ -280,24 +285,25 @@ var meteosBoxID =document.createElement("div")
 var meteosBoxIme =document.createElement("div")
 var meteosBoxAdresa =document.createElement("div")
 
-meteosBoxID.classList = "mes"
+
 meteosBoxIme.classList = "mes"
 meteosBoxAdresa.classList = "mes"
 var meteos  =document.createElement("div")
 var meteoslabel = document.createElement("label")
 meteoslabel.innerHTML = "Lista meteorloga"
-var c = document.createElement("label")
-var x = document.createElement("label")
-var v = document.createElement("label")
-c.innerHTML = "ID"
+
+var x = document.createElement("strong")
+var v = document.createElement("strong")
+
 x.innerHTML = "Ime"
 v.innerHTML = "Adresa"
 
+meteoslabel.classList= "meteo"
 
-meteosBoxMain.appendChild(meteosBoxID)
+
 meteosBoxMain.appendChild(meteosBoxIme)
 meteosBoxMain.appendChild(meteosBoxAdresa)
-meteosBoxID.appendChild(c)
+
 meteosBoxIme.appendChild(x)
 meteosBoxAdresa.appendChild(v)
 meteosBoxMain.classList = "adminBox"
@@ -339,23 +345,22 @@ dodajLokacijuButton.onclick=(ev)=>{
                 p.json().then(data=>{
 
                     var lok = new Lokacija(data,n,null)
-                    lok.crtajLokacije(displayPanel,lokids,loknames)
-
+                    lok.crtajLokacije(displayPanel)
                     
+                   
                 })
 
-        }
-            else {
-                alert("Greška prilikom upisa.");
-                 }
-        }).catch(p => {
+            }
+            else 
+            {
             alert("Greška prilikom upisa.");
+            }
+        }).catch(p => {
+            alert("Nema kapaciteta.");
         });
 
     
 }
-
-
 dodajMeteorologaButton.onclick=(ev)=>{
 
     var ime = adminPanel.querySelectorAll(".dodajMeteoInI")[0].value
@@ -376,8 +381,12 @@ dodajMeteorologaButton.onclick=(ev)=>{
         }).then(p => {
             if (p.ok) {
                 p.json().then(data=>{
+
+                    
                     var met = new Meteorolog(data,ime,adresa)
-                    met.crtajMeteorologe(meteosBoxID,meteosBoxIme,meteosBoxAdresa)
+
+
+                    met.crtajMeteorologe(meteosBoxIme,meteosBoxAdresa)
                 })
                 
         }
@@ -388,8 +397,6 @@ dodajMeteorologaButton.onclick=(ev)=>{
             alert("Greška prilikom upisa.");
         });
 }
-
-
 dodajStanicuButton.onclick=(ev)=>{
 
 
@@ -397,14 +404,9 @@ dodajStanicuButton.onclick=(ev)=>{
     var lokacija = adminPanel.querySelectorAll(".dodajStanInL")[0].value
 
     if(naziv=="" || lokacija=="")
-        alert("Unesite ispravne podatke")
-    else {
-        lokacija = lokids[loknames.findIndex(name => name == lokacija)]
-    }
-    if(lokacija == null)
-        alert("Lokacija ne postoji")
+        alert("Unesite ispravne podatke")    
     else
-        fetch("https://localhost:5001/Stanice/postStanica/" + lokacija,  {
+        fetch("https://localhost:5001/Stanice/postStanica/"+lokacija,  {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -415,6 +417,25 @@ dodajStanicuButton.onclick=(ev)=>{
         }).then(p => {
             if (p.ok) {
                 p.json().then(data=>{
+                    console.log(data);
+                    var option = document.createElement("option");
+                    option.value = data;
+                    option.text = naziv;
+
+                    pmsi.appendChild(option)
+
+                    option = document.createElement("option");
+                    option.value = data;
+                    option.text = naziv;
+
+                    brisanjeStaniceInput.appendChild(option)
+
+
+                    option = document.createElement("option");
+                    option.value = data;
+                    option.text = naziv;
+                    
+                    pvsi.appendChild(option)
 
 
                     var lok = displayPanel.querySelector(".lokbox"+lokacija)
@@ -429,6 +450,7 @@ dodajStanicuButton.onclick=(ev)=>{
                 alert("Nema kapaciteta");
                  }
         }).catch(p => {
+            console.log(p);
             alert("Greška prilikom upisa.");
         });
 }
@@ -480,13 +502,12 @@ postaviMeteorologaButton.onclick=(ev)=>{
 
     var idM = adminPanel.querySelectorAll(".postaviMeteoInM")[0].value
     var idS = adminPanel.querySelectorAll(".postaviMeteoInS")[0].value
-    var test = displayPanel.querySelector(".sm"+idS)
+    var test = displayPanel.querySelector(".ssm"+idS)
 
 
     if(idM=="" || idS=="")
         alert("Unesite ispravne podatke")
-    else if ( test == null)
-        alert("Stanica ne postoji")
+
     else
         fetch("https://localhost:5001/Stanice/setMeteorolog/"+ idS +"/" + idM, {
             method: "PUT"
@@ -496,6 +517,7 @@ postaviMeteorologaButton.onclick=(ev)=>{
             if (p.ok) {
 
                 p.json().then(data=>{
+                    test.classList = "sm" + idM +" ssm"+ idS
                     test.innerHTML = "Meteorolog : "+data;
                 }).catch(p => {
                     console.log(p);
@@ -509,18 +531,12 @@ postaviMeteorologaButton.onclick=(ev)=>{
             alert("Greška prilikom upisa.");
         });
 }
-
 brisanjeLokacijeButton.onclick=(ev)=>{
 
     var lokacija = adminPanel.querySelectorAll(".brisanjeLokIn")[0].value
     
     if(lokacija=="")
         alert("Unesite ispravne podatke")
-    else {
-        lokacija = lokids[loknames.findIndex(name => name == lokacija)]
-    }
-    if(lokacija == null)
-        alert("Lokacija ne postoji")
     else
     fetch("https://localhost:5001/Stanice/deleteLokacija/"+lokacija, {
     headers: {
@@ -528,7 +544,61 @@ brisanjeLokacijeButton.onclick=(ev)=>{
         },
         method: 'delete'
         }).then((data) => {
+
+            var children = Array.from(document.querySelector(".lokbox" + lokacija).children)
+            // console.log(children);
+            children.forEach(el => {
+                var pom = el.className.replace(/\D/g, '')
+                
+                var inp = document.querySelector(".postaviMeteoInS")
+                
+                console.log(inp);
+            for (var i=0; i<inp.length; i++) {
+                
+                if (inp.options[i].value == pom)
+                inp.remove(i);
+            }
+
+            inp = document.querySelector(".postaviVremeInS")
+
+            for (var i=0; i<inp.length; i++) {
+
+                if (inp.options[i].value == pom)
+                inp.remove(i);
+            }
+
+            inp = document.querySelector(".brisanjeStanIn")
+
+            for (var i=0; i<inp.length; i++) {
+
+                if (inp.options[i].value == pom)
+                inp.remove(i);
+            }
+
+            })
+            
             document.querySelectorAll(".mainlok" + lokacija).forEach(el => el.remove());
+
+           
+
+
+            var inp = document.querySelector(".brisanjeLokIn")
+
+            for (var i=0; i<inp.length; i++) {
+                console.log(inp.options[i].value);
+                if (inp.options[i].value == lokacija)
+                inp.remove(i);
+            }
+
+            inp = document.querySelector(".dodajStanInL")
+
+            for (var i=0; i<inp.length; i++) {
+
+                if (inp.options[i].value == lokacija)
+                inp.remove(i);
+            }
+
+       
             data.text().then(text => console.log(text));
     });
 }
@@ -538,7 +608,8 @@ brisanjeMeteorlogaButton.onclick=(ev)=>{
     if(met=="")
         alert("Unesite ispravne podatke")
     else {
-        var lokacija = adminPanel.querySelectorAll(".m"+met)
+        var lokacija = document.querySelectorAll(".sm"+met)       
+        
     }
     if(lokacija == null)
         alert("Lokacija ne postoji")
@@ -549,7 +620,28 @@ brisanjeMeteorlogaButton.onclick=(ev)=>{
         },
         method: 'delete'
         }).then((data) => {
-            lokacija.forEach(el => el.remove());
+            
+            lokacija.forEach(el => el.innerHTML = "");
+            // var lok  = displayPanel.querySelectorAll(".sm"+met);
+            // console.log(met);
+            // console.log(lok);
+            lokacija = document.querySelector(".postaviMeteoInM") //
+            
+            for (var i=0; i<lokacija.length; i++) {
+                if (lokacija.options[i].value == met)
+                lokacija.remove(i);
+            }
+
+            lokacija = document.querySelectorAll(".brisanjeMeteoIn")
+            
+            for (var i=0; i<lokacija.length; i++) {
+                
+                if (lokacija[0].options[i].value == met)
+                lokacija[0].remove(i);
+            }
+
+            document.querySelectorAll(".m"+met).forEach(el => el.remove());
+
         data.text().then(text => console.log(text));
     });
 
@@ -559,12 +651,7 @@ brisanjeStaniceButton.onclick=(ev)=>{
     var lokacija = adminPanel.querySelectorAll(".brisanjeLokIn")[0].value
     var idStanice = adminPanel.querySelectorAll(".brisanjeStanIn")[0].value
     if(lokacija=="")
-        alert("Unesite ispravne podatke")
-    else {
-        lokacija = lokids[loknames.findIndex(name => name == lokacija)]
-    }
-    if(lokacija == null)
-        alert("Lokacija ne postoji")
+        alert("Unesite ispravne podatke")    
     else
     fetch("https://localhost:5001/Stanice/deleteStanica/"+idStanice+"/"+lokacija, {
     headers: {
@@ -572,16 +659,44 @@ brisanjeStaniceButton.onclick=(ev)=>{
         },
         method: 'delete'
         }).then((data) => {
+
+            var inp = document.querySelector(".postaviMeteoInS")
+            console.log(inp);
+            for (var i=0; i<inp.length; i++) {
+                
+                if (inp.options[i].value == idStanice)
+                inp.remove(i);
+            }
+
+            inp = document.querySelector(".postaviVremeInS")
+
+            for (var i=0; i<inp.length; i++) {
+
+                if (inp.options[i].value == idStanice)
+                inp.remove(i);
+            }
+
+            inp = document.querySelector(".brisanjeStanIn")
+
+            for (var i=0; i<inp.length; i++) {
+
+                if (inp.options[i].value == idStanice)
+                inp.remove(i);
+            }
+
+
             document.querySelectorAll(".s" + idStanice).forEach(el => el.remove());
             data.text().then(text => console.log(text));
     });
 
 }
 
-let lokids = []
-let loknames = []
+
+
+
 
 fetch("https://localhost:5001/Stanice/getAllLokacije",{
+
     method:"GET",
     headers: {
         "Content-Type": "application/json"
@@ -589,9 +704,11 @@ fetch("https://localhost:5001/Stanice/getAllLokacije",{
 }).then(p => {
 
         p.json().then(data =>{
-            data.forEach(element => {
+            data.forEach(element => {                
+
+                var displayPanel = document.querySelector(".displayPanel")
                 var lok = new Lokacija(element.id,element.naziv,element.stanice)
-                lok.crtajLokacije(displayPanel,lokids,loknames)
+                lok.crtajLokacije(displayPanel)
             });
         })
        
@@ -611,9 +728,9 @@ fetch("https://localhost:5001/Stanice/getAllMeteorolog",{
         p.json().then(data =>{
 
             
-            data.forEach(element =>{
-                var met = new Meteorolog(element.id,element.naziv,element.adresa)            
-                met.crtajMeteorologe(meteosBoxID,meteosBoxIme,meteosBoxAdresa)
+            data.forEach(element =>{                
+               var met = new Meteorolog(element.id,element.naziv,element.adresa)            
+               met.crtajMeteorologe(meteosBoxIme,meteosBoxAdresa)
             })
             
             

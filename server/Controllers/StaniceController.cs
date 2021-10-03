@@ -96,7 +96,7 @@ namespace webprog.Controllers
         {   
             var meteorolog = Context.Meteorolog.Include(p=>p.Stanice).Where( p=> p.ID == idMeteorolog).FirstOrDefault();
             var stanica =  await Context.Stanice.FindAsync(idStanica);
-            if(meteorolog != null && stanica != null && stanica.Meteorolog == null)
+            if(meteorolog != null && stanica != null)
             {
                 
                 meteorolog.Stanice.Add(stanica);

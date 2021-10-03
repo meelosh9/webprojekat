@@ -2,8 +2,9 @@ body
 {
  display: flex;
  flex-direction: row;
- justify-content: space-evenly;
-
+ justify-content: space-between;
+ flex-wrap: wrap;
+ background-color: beige;
 
 }
 
@@ -11,33 +12,40 @@ body
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    width: auto;
+    flex: 1 1 300;
+    background-color:burlywood;
+    width: 400px;
 }
 
 .displayPanel{
     display: flex;
     flex-direction: column;
-    width: 70%;
-
+    flex: 3 1 auto;
+    width:  400px;
 }
 
 .dodajLokaciju{
     display:  flex;
     flex-direction: column;
     border:  1px solid black;
+    margin: 2px;
+    
 
 }
 .adminBoxInner{
     display: flex;
     flex-direction: column;
-    justify-content:space-between
+    justify-content:space-between;
+    margin: 3px;
+
 }
 .adminBox{
     display: flex;
     flex-direction: row;
-    flex: 1 0 auto;
+
     justify-content:space-between;
     border:  1px solid black;
+    margin: 5px;
 
 }
 .stanica{
@@ -46,7 +54,7 @@ body
     flex-direction: column;
     border:  1px solid black;
 
-    background-color:rgb(245, 235, 100);
+    background-color:burlywood;
     margin: 5px;;
 }
 .lokacija{
@@ -56,16 +64,34 @@ body
 .lokbox{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 .meteos{
     border:  1px solid black;
 
 }
 .mainlok{
-    background-color:rgb(82, 143, 179);
+    background-color:beige;
+    padding: 5px;
+    font-size: 20px;
 }
 .mes{
 
     display: flex;
     flex-direction: column;
+    border-bottom: black;
+    border:  1px solid black;
+
+}
+.naslov, .meteo{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.metdiv{
+    width: 191px;
+    display: flex;
+}
+.postaviMeteoInS, .brisanjeLokIn{
+    width:175px;
 }

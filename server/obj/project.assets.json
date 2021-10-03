@@ -5554,11 +5554,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Biljana\\repos\\webprojekat\\server\\webprog.csproj",
+      "projectUniqueName": "C:\\Users\\Biljana\\OneDrive\\Dokumenti\\GitHub\\webprojekat\\server\\webprog.csproj",
       "projectName": "webprog",
-      "projectPath": "C:\\Users\\Biljana\\repos\\webprojekat\\server\\webprog.csproj",
+      "projectPath": "C:\\Users\\Biljana\\OneDrive\\Dokumenti\\GitHub\\webprojekat\\server\\webprog.csproj",
       "packagesPath": "C:\\Users\\Biljana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Biljana\\repos\\webprojekat\\server\\obj\\",
+      "outputPath": "C:\\Users\\Biljana\\OneDrive\\Dokumenti\\GitHub\\webprojekat\\server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
