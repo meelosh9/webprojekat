@@ -622,9 +622,7 @@ brisanjeMeteorlogaButton.onclick=(ev)=>{
         }).then((data) => {
             
             lokacija.forEach(el => el.innerHTML = "");
-            // var lok  = displayPanel.querySelectorAll(".sm"+met);
-            // console.log(met);
-            // console.log(lok);
+
             lokacija = document.querySelector(".postaviMeteoInM") //
             
             for (var i=0; i<lokacija.length; i++) {
